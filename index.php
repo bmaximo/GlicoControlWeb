@@ -41,14 +41,6 @@
 							<a href="#">Sobre</a>
 						</li>
 					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control">
-						</div> 
-						<button type="submit" class="btn btn-default">
-							Submit
-						</button>
-					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a class="btn" role="button" href="#modal-container-960468" data-toggle="modal">Área de Acesso aos Profissionais de Saúde</a>							

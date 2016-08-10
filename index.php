@@ -83,6 +83,7 @@
 											<input type="password" name="senha" id="senha" required class="form-control"/>
 											<br />
 											<input type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-default">
+										</form>
 									</div> 
 									<div id="cadastrar">
 										<h1>Cadastrar</h1>
@@ -105,7 +106,7 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="Carousel Bootstrap First" src="http://lorempixel.com/output/sports-q-c-1600-500-1.jpg">
+						<img alt="Carousel Bootstrap First" src="img/slide1.jpg">
 						<div class="carousel-caption">
 							<h4>
 								First Thumbnail label
@@ -116,7 +117,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="Carousel Bootstrap Second" src="http://lorempixel.com/output/sports-q-c-1600-500-2.jpg">
+						<img alt="Carousel Bootstrap Second" src="img/slide2.jpg">
 						<div class="carousel-caption">
 							<h4>
 								Second Thumbnail label
@@ -127,7 +128,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="Carousel Bootstrap Third" src="http://lorempixel.com/output/sports-q-c-1600-500-3.jpg">
+						<img alt="Carousel Bootstrap Third" src="img/slide3.jpeg">
 						<div class="carousel-caption">
 							<h4>
 								Third Thumbnail label

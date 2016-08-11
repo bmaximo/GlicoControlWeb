@@ -38,11 +38,25 @@
 								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li>
-									<?php
+								<li class="dropdown pull-right">
+									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+										<?php
 										session_start();
-										echo "bem vindo, ". $_SESSION['nome']."<br>";
-									?>							
+										echo $_SESSION['nome'];
+										?>
+										<strong class="caret"></strong>
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#">Minha Área</a>
+										</li>
+										<li>
+											<a href="#">Meu Perfil</a>
+										</li>
+										<li>
+											<a href="#">Sair</a>
+										</li>
+									</ul>
 								</li>
 							</ul>
 						</div>
@@ -54,7 +68,7 @@
 					<a href="buscar_paciente.php">Buscar Paciente</a>
 				</div>
 				<div class="col-md-4">
-					
+					<a href="lista_paciente.php">Lista de Pacientes</a>
 				</div>
 				<div class="col-md-4">
 					

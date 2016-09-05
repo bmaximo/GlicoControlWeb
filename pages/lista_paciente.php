@@ -39,7 +39,9 @@
 							while ($a = mysqli_fetch_array ($r)){
 								echo "<tr>";
 								echo "<td>";
+								echo "<a href='paciente_sessao.php?id_paciente=".$a["id_paciente"]."'>";
 								echo $a["nome"];
+								//echo "</a>";
 								echo "</td>";
 								echo "<td>";
 								echo $a["data_nascimento"];
@@ -47,8 +49,11 @@
 								echo "<td>";
 								echo $a["email"];
 								echo "</td>";
+								echo "</tr>";
 							}
 						?>
+						</tbody>
+					</table>
 				</div>
 			</div>
     </div>

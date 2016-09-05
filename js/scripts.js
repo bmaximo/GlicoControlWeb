@@ -13,3 +13,9 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
   
 });
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});

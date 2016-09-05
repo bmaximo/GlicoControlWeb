@@ -79,7 +79,7 @@
 											<label>Email: </label>
 											<input type="email" name="email" id="email" required class="form-control"/>
 											<br />
-											<label>Senha</label>
+											<label>Senha: </label>
 											<input type="password" name="senha" id="senha" required class="form-control"/>
 											<br />
 											<input type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-default">
@@ -87,7 +87,22 @@
 									</div> 
 									<div id="cadastrar">
 										<h1>Cadastrar</h1>
-
+										<form name="cadastro" method="post" action="pages/cadastro.php" >
+											<label>Nome:</label>
+											<input type="text" name="nome" id="nome" required class="form-control"/>
+											<label>Email: </label>
+											<input type="email" name="email" id="email" required class="form-control"/>
+											<label>CPF: </label>
+											<input type="text" name="cpf" id="cpf" pattern="[0-9]{11}" class="cpf" required class="form-control"/>
+											<label>CRM: </label>
+											<input type="text" name="crm" id="crm" pattern="[0-9]" required class="form-control"/>
+											<label>Senha: </label>
+											<input type="password" name="senha" id="senha" required class="form-control"/>
+											<label>Confirmar Senha: </label>
+											<input type="password" name="confirmasenha" id="confirmasenha" required class="form-control"/>
+											<br />
+											<input type="submit" name="Cadastrar" id="Cadastrar" value="Cadastrar" class="btn btn-default">
+										</form>
 									</div>
 								</div>
 						    </div>
@@ -165,6 +180,22 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+		<script>
+			$(function() {
+				 $('.cpf').mask('000.000.000-00', {reverse: true});
+			});
+			var password = document.getElementById("senha"),
+			confirm_password = document.getElementById("confirmasenha");
+			function validatePassword(){
+				if(password.value != confirm_password.value) {
+					confirm_password.setCustomValidity("Senhas não correspondem");
+				} else {
+					confirm_password.setCustomValidity('');
+				}
+			}
+			password.onchange = validatePassword;
+			confirm_password.onkeyup = validatePassword;
+		</script>
 
     
   </body>

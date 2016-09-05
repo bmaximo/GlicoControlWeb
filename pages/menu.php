@@ -1,9 +1,4 @@
-<html>
-  <head>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-  </head>
-  <body>
+
     <div class="row">
 		<div class="col-md-12">	
 		<div class="topo">
@@ -19,13 +14,13 @@
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="index.php">GlicoControl</a>
+					<a class="navbar-brand" href="../index.php">GlicoControl</a>
 				</div>
 				
 				<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="index.php">Inicio</a>
+							<a href="../index.php">Inicio</a>
 						</li>
 						<li>
 							<a href="#">Sobre</a>
@@ -57,5 +52,3 @@
 			</nav>
 		</div>
 	</div>
-  </body>
-</html>

@@ -34,7 +34,7 @@
 			<div class="row">
 				<div class ="col-md-4">
 					<?php
-						echo "<a href= 'relatorio_medicao.php'>Relatório de Medições</a>";
+						echo "<a href= 'relatorio_medicao.php' ><div class='icone'>Relatório de Medições</div></a>";
 					?>
 				</div>
 				<div class ="col-md-4">

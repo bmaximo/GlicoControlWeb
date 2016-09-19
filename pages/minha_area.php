@@ -11,7 +11,7 @@
 		<link href="../css/style.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container-fluid">
+		<div class="container-fluid" >
 			<div class="row">
 				<div class="col-md-12">	
 					<div class="topo">
@@ -63,7 +63,7 @@
 					</nav>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row row-white">
 				<div class="col-md-4">
 					<a href="buscar_paciente.php">Buscar Paciente</a>
 				</div>
@@ -71,7 +71,9 @@
 					<a href="lista_paciente.php">Lista de Pacientes</a>
 				</div>
 				<div class="col-md-4">
-					
+				<div class="topo">
+					<img src="../img/icon_meuperfil.png" width="100%" height="100%">
+					</div>
 				</div>
 			</div>
 		</div>

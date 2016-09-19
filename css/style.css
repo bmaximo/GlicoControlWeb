@@ -79,3 +79,9 @@ a:active {
 .icone: hover{
   border: red;
 }
+
+.row-white{
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #f8f8f8;
+}

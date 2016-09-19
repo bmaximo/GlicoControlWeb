@@ -51,7 +51,7 @@
 			</nav>
 		</div>
 	</div>
-	<div class="row">
+	<div class=" row">
 		<div class="col-md-12">
 			<div class="modal fade" id="modal-container-960468" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -93,9 +93,9 @@
 											<label>Email: </label>
 											<input type="email" name="email" id="email" required class="form-control"/>
 											<label>CPF: </label>
-											<input type="text" name="cpf" id="cpf" pattern="[0-9]{11}" class="cpf" required class="form-control"/>
+											<input type="text" name="cpf" id="cpf" pattern="[0-9]{11}" required class="form-control"/>
 											<label>CRM: </label>
-											<input type="text" name="crm" id="crm" pattern="[0-9]" required class="form-control"/>
+											<input type="text" name="crm" id="crm" pattern="[0-9]{4}" required class="form-control"/>
 											<label>Senha: </label>
 											<input type="password" name="senha" id="senha" required class="form-control"/>
 											<label>Confirmar Senha: </label>
@@ -157,7 +157,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row row-white">
 		<div class="col-md-4">
 			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/">
 		</div>
@@ -184,7 +184,7 @@
 			$(function() {
 				 $('.cpf').mask('000.000.000-00', {reverse: true});
 			});
-			var password = document.getElementById("senha"),
+			/*var password = document.getElementById("senha"),
 			confirm_password = document.getElementById("confirmasenha");
 			function validatePassword(){
 				if(password.value != confirm_password.value) {
@@ -194,7 +194,7 @@
 				}
 			}
 			password.onchange = validatePassword;
-			confirm_password.onkeyup = validatePassword;
+			confirm_password.onkeyup = validatePassword;*\
 		</script>
 
     

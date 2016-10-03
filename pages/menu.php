@@ -37,7 +37,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#">Minha Área</a>
+									<a href="minha_area.php">Minha Área</a>
 								</li>
 								<li>
 									<a href="#">Meu Perfil</a>

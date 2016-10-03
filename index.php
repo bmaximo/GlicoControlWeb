@@ -43,7 +43,14 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a class="btn" role="button" href="#modal-container-960468" data-toggle="modal">Área de Acesso aos Profissionais de Saúde</a>							
+							<?php
+								session_start();
+								if(!empty($_SESSION['id_usuario'])){
+									echo $_SESSION['nome'];
+								}else{
+									echo "<a class='btn' role='button' href='#modal-container-960468' data-toggle='modal'>Área de Acesso aos Profissionais de Saúde</a>	"
+								}
+							?>
 						</li>
 					</ul>
 				</div>
@@ -83,6 +90,7 @@
 											<input type="password" name="senha" id="senha" required class="form-control"/>
 											<br />
 											<input type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-default">
+											<a href="#">Esqueci minha senha</a>
 										</form>
 									</div> 
 									<div id="cadastrar">
@@ -184,7 +192,7 @@
 			$(function() {
 				 $('.cpf').mask('000.000.000-00', {reverse: true});
 			});
-			/*var password = document.getElementById("senha"),
+			var password = document.getElementById("senha"),
 			confirm_password = document.getElementById("confirmasenha");
 			function validatePassword(){
 				if(password.value != confirm_password.value) {
@@ -194,7 +202,7 @@
 				}
 			}
 			password.onchange = validatePassword;
-			confirm_password.onkeyup = validatePassword;*\
+			confirm_password.onkeyup = validatePassword;
 		</script>
 
     

@@ -11,7 +11,7 @@
 		<link href="../css/style.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container-fluid">
+		<div class="container-fluid" >
 			<div class="row">
 				<div class="col-md-12">	
 					<div class="topo">
@@ -38,11 +38,25 @@
 								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li>
-									<?php
+								<li class="dropdown pull-right">
+									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+										<?php
 										session_start();
-										echo "bem vindo, ". $_SESSION['nome'];
-									?>							
+										echo $_SESSION['nome'];
+										?>
+										<strong class="caret"></strong>
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="minha_area.php">Minha Área</a>
+										</li>
+										<li>
+											<a href="#">Meu Perfil</a>
+										</li>
+										<li>
+											<a href="sair.php">Sair</a>
+										</li>
+									</ul>
 								</li>
 							</ul>
 						</div>

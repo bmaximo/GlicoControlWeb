@@ -13,10 +13,12 @@
 	<body>
 		<div class="container-fluid">
 			<?php
-			include('menu.php');
+				include('menu.php');
 			?>
-			<div class="row">
+			<div class="row-white">
+			<div class="row row-space">
 				<div class="col-md-12">
+					<h1>Relatório de Medições</h1>
 					<?php
 						$p = $_SESSION['id_paciente'];
 						$sql = "select * from paciente where id_paciente = '$p'";
@@ -25,6 +27,8 @@
 						$dados = mysqli_fetch_array($r);
 						echo "Nome do paciente: ".$dados['nome']."<br />";
 						echo "Data de nascimento: ".$dados['data_nascimento']."<br />";
+						echo "Diabetes ".$dados['tipo_diabetes']."<br />";
+						echo "Data de inicio da doença: ".$dados['data_diabetico']."<br />";
 						echo "Email: ".$dados['email'];
 					?>
 					<form name="gerarRelatorio" class="form-inline" method="post" action="?go=geraRelatorio">
@@ -41,7 +45,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row row-space">
 				<div class ="col-md-12">
 					<table class="table table-striped">
 						<thead>
@@ -50,10 +54,13 @@
 									Valor
 								</th>
 								<th>
-									Data/Hora
+									Data
 								</th>
 								<th>
-									Descrição
+									Hora
+								</th>
+								<th>
+									Refeição
 								</th>
 							</tr>
 						</thead>
@@ -63,15 +70,15 @@
 									$id = $_SESSION['id_paciente'];
 									$inicio = $_POST['dataInicio']." 00:00:00";
 									$fim = $_POST['dataFim']." 00:00:00";
-									$sql = "select * from medicao where fk_paciente = '$id' and data between '$inicio' and '$fim' order by data";
+									$sql = "select * from medicao where fk_paciente = '$id' and data_medicao between '$inicio' and '$fim' order by data_medicao, hora_medicao";
 									$cor = "";
 									require 'connection_mysql.php';
 									try{
 									$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 									while ($a = mysqli_fetch_array ($r)){
-										if($a['valor']>=160){
+										if($a['valor']>=160.00){
 											$cor = "danger";
-										}elseif($a['valor']<70){
+										}elseif($a['valor']<70.00){
 											$cor = "warning";
 										}else{
 											$cor="active";
@@ -81,21 +88,25 @@
 										echo $a["valor"];
 										echo "</td>";
 										echo "<td>";
-										echo $a["data"];
+										echo $a["data_medicao"];
 										echo "</td>";
 										echo "<td>";
-										echo $a["descricao"];
+										echo $a["hora_medicao"];
+										echo "</td>";
+										echo "<td>";
+										echo $a["refeicao"];
 										echo "</td>";
 										echo "</tr>";
 									}
 									}catch(Exception $e){
-										echo "Erro ao adicionar paciente: ".  $e->getMessage();
+										echo "Erro ao gerar relatório: ".  $e->getMessage();
 									}
 								}
 							?>
 						</tbody>
 					</table>
 				</div>
+			</div>
 			</div>
 		</div>
 	</body>

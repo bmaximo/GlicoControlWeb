@@ -46,9 +46,27 @@
 							<?php
 								session_start();
 								if(!empty($_SESSION['id_usuario'])){
+									
+									echo "<li class='dropdown pull-right'>";
+									echo "<a href='#' data-toggle='dropdown' class='dropdown-toggle'>";
 									echo $_SESSION['nome'];
+									echo "<strong class='caret'></strong>";
+									echo "</a>";
+									echo "<ul class='dropdown-menu'>";
+									echo "<li>";
+									echo "<a href='pages/minha_area.php'>Minha Área</a>";
+									echo "</li>";
+									echo "<li>";
+									echo "<a href='#'>Meu Perfil</a>";
+									echo "</li>";
+									echo "<li>";
+									echo "<a href='pages/sair.php'>Sair</a>";
+									echo "</li>";
+									echo "</ul>";
+									echo "</li>";
+									
 								}else{
-									echo "<a class='btn' role='button' href='#modal-container-960468' data-toggle='modal'>Área de Acesso aos Profissionais de Saúde</a>	"
+									echo "<a class='btn' role='button' href='#modal-container-960468' data-toggle='modal'>Área de Acesso aos Profissionais de Saúde</a>	";
 								}
 							?>
 						</li>
@@ -98,6 +116,8 @@
 										<form name="cadastro" method="post" action="pages/cadastro.php" >
 											<label>Nome:</label>
 											<input type="text" name="nome" id="nome" required class="form-control"/>
+											<label>Data de nascimento: </label>
+											<input type="date" name="datanasc" id="datanasc" required class="form-control"/>
 											<label>Email: </label>
 											<input type="email" name="email" id="email" required class="form-control"/>
 											<label>CPF: </label>
@@ -193,7 +213,7 @@
 				 $('.cpf').mask('000.000.000-00', {reverse: true});
 			});
 			var password = document.getElementById("senha"),
-			confirm_password = document.getElementById("confirmasenha");
+			var confirm_password = document.getElementById("confirmasenha");
 			function validatePassword(){
 				if(password.value != confirm_password.value) {
 					confirm_password.setCustomValidity("Senhas não correspondem");

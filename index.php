@@ -16,7 +16,7 @@
     <div class="container-fluid">
     <div class="row">
 		<div class="col-md-12">	
-		<div class="topo">
+		<div class="logo">
 			<img src="img/logo.png" width="100%" height="100%">
 		</div>
 		</div>
@@ -76,7 +76,8 @@
 			</nav>
 		</div>
 	</div>
-	<div class=" row">
+	<div class="row-white">
+	<div class="row">
 		<div class="col-md-12">
 			<div class="modal fade" id="modal-container-960468" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -107,7 +108,7 @@
 											<label>Senha: </label>
 											<input type="password" name="senha" id="senha" required class="form-control"/>
 											<br />
-											<input type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-default">
+											<input type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-primary">
 											<a href="#">Esqueci minha senha</a>
 										</form>
 									</div> 
@@ -129,7 +130,7 @@
 											<label>Confirmar Senha: </label>
 											<input type="password" name="confirmasenha" id="confirmasenha" required class="form-control"/>
 											<br />
-											<input type="submit" name="Cadastrar" id="Cadastrar" value="Cadastrar" class="btn btn-default">
+											<input type="submit" name="Cadastrar" id="Cadastrar" value="Cadastrar" class="btn btn-primary">
 										</form>
 									</div>
 								</div>
@@ -138,6 +139,7 @@
 					</div>
 				</div>				
 			</div>
+			
 			<div class="carousel slide" id="carousel-708755">
 				<ol class="carousel-indicators">
 					<li class="active" data-slide-to="0" data-target="#carousel-708755">
@@ -149,13 +151,13 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="Carousel Bootstrap First" src="img/slide1.jpg">
+						<img alt="Carousel Bootstrap First" src="img/slide1.png">
 						<div class="carousel-caption">
 							<h4>
-								First Thumbnail label
+								Aplicativo Para Pacientes
 							</h4>
 							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+								Baixe agora mesmo o app GlicoControl Mobile
 							</p>
 						</div>
 					</div>
@@ -170,38 +172,34 @@
 							</p>
 						</div>
 					</div>
-					<div class="item">
-						<img alt="Carousel Bootstrap Third" src="img/slide3.jpeg">
-						<div class="carousel-caption">
-							<h4>
-								Third Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
 				</div> <a class="left carousel-control" href="#carousel-708755" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-708755" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 		</div>
 	</div>
-	<div class="row row-white">
+	<div class="row row-space">
 		<div class="col-md-4">
-			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/">
+			<div class="topo">
+				<img src="../img/quadrado_azul.png" width="100%" height="100%" class="img-circle">
+			</div>
 		</div>
 		<div class="col-md-4">
-			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/">
+			<div class="topo">
+				<img src="../img/quadrado_azul.png" width="100%" height="100%" class="img-circle">
+			</div>
 		</div>
 		<div class="col-md-4">
-			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/">
+			<div class="topo">
+				<img src="../img/quadrado_azul.png" width="100%" height="100%" class="img-circle">
+			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row row-space">
 		<div class="col-md-12">
 			<h3 class="text-center text-primary">
 				h3. Lorem ipsum dolor sit amet.
 			</h3>
 		</div>
+	</div>
 	</div>
 </div>
 

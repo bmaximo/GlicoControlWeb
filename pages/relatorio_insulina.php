@@ -16,11 +16,10 @@
 				include('menu.php');
 			?>
 			<div class="row-white">
-			<div class="container">
-			
+			<div class="container">	
 			<div class="row row-space">
 				<div class="col-md-12">
-					<h1>Relatório de Medições</h1>
+					<h1>Relatório de Medicações</h1>
 				</div>
 				<div class="col-md-12">
 						<?php
@@ -65,16 +64,16 @@
 						<thead>
 							<tr>
 								<th>
-									Valor
-								</th>
-								<th>
 									Data
 								</th>
 								<th>
 									Hora
 								</th>
 								<th>
-									Refeição
+									Tipo
+								</th>
+								<th>
+									Unidade
 								</th>
 							</tr>
 						</thead>
@@ -92,32 +91,17 @@
 										$inicio = $_POST['dataInicio']." 00:00:00";
 										$fim = $_POST['dataFim']." 00:00:00";
 									//}
-									$sql = "select * from medicao where fk_paciente = '$id' and data_medicao between '$inicio' and '$fim' order by data_medicao, hora_medicao";
+									$sql = "select * from insulina where fk_paciente = '$id' and data_insulina between '$inicio' and '$fim' order by data_insulina, hora_insulina";
 									$cor = "";
 									require 'connection_mysql.php';
 									try{
 									$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 									while ($a = mysqli_fetch_array ($r)){
-										if($a['valor']>=160.00){
-											$cor = "danger";
-										}elseif($a['valor']<70.00){
-											$cor = "warning";
-										}else{
-											$cor="active";
-										}
-										echo "<tr class='".$cor."'>";
-										echo "<td>";
-										echo $a["valor"];
-										echo "</td>";
-										echo "<td>";
-										echo $a["data_medicao"];
-										echo "</td>";
-										echo "<td>";
-										echo $a["hora_medicao"];
-										echo "</td>";
-										echo "<td>";
-										echo $a["refeicao"];
-										echo "</td>";
+										echo "<tr>";
+										echo "<td>".$a["data_insulina"]."</td>";
+										echo "<td>".$a["hora_insulina"]."</td>";
+										echo "<td>".$a["tipo"]."</td>";
+										echo "<td>".$a["unidade"]."</td>";
 										echo "</tr>";
 									}
 									}catch(Exception $e){

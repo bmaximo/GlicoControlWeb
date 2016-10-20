@@ -64,16 +64,34 @@
 				</div>
 			</div>
 			<div class="row row-white">
-				<div class="col-md-4">
-					<a href="buscar_paciente.php">Buscar Paciente</a>
+				<div class="col-md-12">
+					<h1>Minha Área</h1>
+					<br /><br />
 				</div>
 				<div class="col-md-4">
-					<a href="lista_paciente.php">Lista de Pacientes</a>
-				</div>
-				<div class="col-md-4">
-				<div class="topo">
-					<img src="../img/icon_meuperfil.png" width="100%" height="100%">
+						<a href="buscar_paciente.php">
+							<div class="topo">
+							<img src="../img/adiciona.png" width="100%" height="100%" class="img-circle">
+							</div>
+							<h3 class="text-center text-primary">Buscar Paciente</h3>
+						</a>
 					</div>
+				
+				<div class="col-md-4">
+					<a href="lista_paciente.php">
+						<div class="topo">
+							<img src="../img/lista_paciente.png" width="100%" height="100%" class="img-circle">
+						</div>
+						<h3 class="text-center text-primary">Lista de Pacientes</h3>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="perfil.php">
+						<div class="topo">
+							<img src="../img/perfil.png" width="100%" height="100%" class="img-circle">
+						</div>
+						<h3 class="text-center text-primary">Meu Perfil</h3>
+					</a>
 				</div>
 			</div>
 		</div>

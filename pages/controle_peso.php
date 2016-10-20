@@ -16,22 +16,21 @@
         include('menu.php');
       ?>
       <div class="row-white">
+				<div class="container">
         <div class="row row-space">
           <div class="col-md-12">
             <h1>Controle de Peso</h1>
-            <?php
-              $p = $_SESSION['id_paciente'];
-              $sql = "select * from paciente where id_paciente = '$p'";
-              require 'connection_mysql.php';
-              $r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
-              $dados = mysqli_fetch_array($r);
-              echo "Nome do paciente: ".$dados['nome']."<br />";
-              echo "Data de nascimento: ".$dados['data_nascimento']."<br />";
-              echo "Diabetes ".$dados['tipo_diabetes']."<br />";
-              echo "Data de inicio da doença: ".$dados['data_diabetico']."<br />";
-              echo "Email: ".$dados['email'];
-            ?>
-          </div>
+					</div>
+          <div class="col-md-12">
+						<?php
+							$p = $_SESSION['id_paciente'];
+							$sql = "select nome from paciente where id_paciente = '$p'";
+							require 'connection_mysql.php';
+							$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
+							$dados = mysqli_fetch_array($r);
+							echo "<h4 class='text-center text-primary'><p class='text-center'>Paciente: ".$dados['nome']."</p></h4>";
+						?>
+					</div>
         </div>
         <div class="row row-space">
 					<div class ="col-md-12">
@@ -68,6 +67,7 @@
 						</table>
 					</div>
       </div>
+		</div>
     </div>
   </body>
 </html>

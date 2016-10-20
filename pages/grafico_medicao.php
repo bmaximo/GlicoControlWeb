@@ -26,19 +26,21 @@
 				<div class="row row-space">
 					<div class="col-md-12">
 						<h1>Gráfico de Medições</h1>
+					</div>
+					<div class="col-md-12">
 						<?php
 							$p = $_SESSION['id_paciente'];
-							$sql = "select * from paciente where id_paciente = '$p'";
+							$sql = "select nome from paciente where id_paciente = '$p'";
 							require 'connection_mysql.php';
 							$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 							$dados = mysqli_fetch_array($r);
-							echo "Nome do paciente: ".$dados['nome']."<br />";
-							echo "Data de nascimento: ".$dados['data_nascimento']."<br />";
-							echo "Diabetes ".$dados['tipo_diabetes']."<br />";
-							echo "Data de inicio da doença: ".$dados['data_diabetico']."<br />";
-							echo "Email: ".$dados['email'];
+							echo "<h4 class='text-center text-primary'><p class='text-center'>Paciente: ".$dados['nome']."</p></h4>";
 						?>
-						<form name="gerarGrafico" class="form-inline" method="post" action="?go=geraGrafico">
+					</div>
+					<div class="col-md-12">
+						<br /><br />
+						<strong>Escolha uma data inicial e final para gerar o gráfico:</strong>
+						<form name="gerarGraficoo" class="form-inline" method="post" action="?go=geraGrafico">
 							<div class="form-group">
 								<label for="dataInicial">Data Inicial:</label><br />
 								<input type="date" class="form-control" id="dataInicio" name="dataInicio" />
@@ -47,7 +49,15 @@
 								<label for="dataFinal">Data Final:</label><br />
 								<input type="date" class="form-control" id="dataFim" name="dataFim" />
 							</div>
-							<br />
+							<br /><br />
+							<strong>Você também pode escolher um periodo pré-determinado:</strong>
+							<select id="periodo" name="periodo" class="form-control">
+								<option value="">Selecione:</option>
+								<option value="15">Últimos 15 dias</option>
+								<option value="30">Últimos 30 dias</option>
+								<option value="60">Últimos 60 dias</option>
+							</select>
+							<br /><br />
 							<button type="submit" name="Gerar" id="Gerar" class="btn btn-primary">Gerar Gráfico</button>
 						</form>
 					</div>
@@ -56,9 +66,17 @@
 				<div class="col-md-12">
           <?php
 						if(@$_GET['go'] == 'geraGrafico'){
+							$fim;
+							$inicio;
 							$paciente = $_SESSION['id_paciente'];
-							$inicio = $_POST['dataInicio']." 00:00:00";
-							$fim = $_POST['dataFim']." 00:00:00";
+							$p = $_POST['periodo'];
+							if(($p != "") || ($p != null)){
+								$fim = date('Y-m-d');
+								$inicio = date('Y-m-d', mktime(0, 0, 0, date("m"), date("d")-$p, date("Y")));
+							}else{
+								$inicio = $_POST['dataInicio'];
+								$fim = $_POST['dataFim'];
+							}
 							$query = "select data_medicao, AVG(valor) as valor from medicao where fk_paciente = ".$paciente." 
 												and data_medicao between '$inicio' and '$fim' 
 												group by data_medicao

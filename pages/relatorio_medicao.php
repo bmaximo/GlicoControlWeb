@@ -17,7 +17,6 @@
 			?>
 			<div class="row-white">
 			<div class="container">
-			
 			<div class="row row-space">
 				<div class="col-md-12">
 					<h1>Relatório de Medições</h1>
@@ -81,17 +80,17 @@
 						<tbody>
 							<?php
 								if(@$_GET['go'] == 'geraRelatorio'){
+									$fim;
+									$inicio;
 									$id = $_SESSION['id_paciente'];
 									$p = $_POST['periodo'];
-									$da = date('Y-m-d', mktime(0, 0, 0, date("m"), date("d")-$p, date("Y")));
-									echo $da;
-									/*if($p != ""){
-										$inicio = date('Y-m-d');
-										$fim = date('Y-m-d', mktime(0, 0, 0, date("m"), date("d")-$p, date("Y")));
-									}else{*/
-										$inicio = $_POST['dataInicio']." 00:00:00";
-										$fim = $_POST['dataFim']." 00:00:00";
-									//}
+									if(($p != "") || ($p != null)){
+										$fim = date('Y-m-d');
+										$inicio = date('Y-m-d', mktime(0, 0, 0, date("m"), date("d")-$p, date("Y")));
+									}else{
+										$inicio = $_POST['dataInicio'];
+										$fim = $_POST['dataFim'];
+									}
 									$sql = "select * from medicao where fk_paciente = '$id' and data_medicao between '$inicio' and '$fim' order by data_medicao, hora_medicao";
 									$cor = "";
 									require 'connection_mysql.php';

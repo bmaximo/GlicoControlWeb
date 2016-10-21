@@ -109,6 +109,9 @@
 				</div>
 				</div>
 			</div>
+			<?php
+				include('rodape.php');
+			?>
 		</div>
 		<script>
 			var password = document.getElementById("novasenha"),

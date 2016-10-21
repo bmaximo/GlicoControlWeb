@@ -120,6 +120,9 @@
       </div>
 			</div>
     </div>
+		<?php
+			include('rodape.php');
+		?>
 		</div>
   </body>
 </html>

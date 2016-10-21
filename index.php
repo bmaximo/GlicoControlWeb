@@ -38,8 +38,11 @@
 							<a href="index.php">Inicio</a>
 						</li>
 						<li>
-							<a href="#">Sobre</a>
+							<a href="pages/sobre.php">Sobre</a>
 						</li>
+						<li>
+								<a href="pages/estatisticas.php">Estátisticas</a>
+							</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>

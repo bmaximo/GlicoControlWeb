@@ -20,7 +20,10 @@
 									<a href="../index.php">Inicio</a>
 								</li>
 								<li>
-									<a href="#">Sobre</a>
+									<a href="sobre.php">Sobre</a>
+								</li>
+								<li>
+									<a href="estatisticas.php">Estatisticas</a>
 								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">

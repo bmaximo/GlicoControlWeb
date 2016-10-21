@@ -18,6 +18,12 @@
       <div class="row-white">
 				<div class="container">
         <div class="row row-space">
+					<div class="col-md-3">
+						<br />
+						<a class="btn btn-primary btn-xs" href="area_paciente.php" role="button">
+							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar ao paciente
+						</a>
+					</div>
           <div class="col-md-12">
             <h1>Controle de Peso</h1>
 					</div>
@@ -69,5 +75,8 @@
       </div>
 		</div>
     </div>
+		<script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
   </body>
 </html>

@@ -18,6 +18,12 @@
 			<div class="row-white">
 			<div class="container">	
 			<div class="row row-space">
+				<div class="col-md-3">
+					<br />
+					<a class="btn btn-primary btn-xs" href="area_paciente.php" role="button">
+						<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar ao paciente
+					</a>
+				</div>
 				<div class="col-md-12">
 					<h1>Relatório de Medicações</h1>
 				</div>
@@ -97,8 +103,9 @@
 									try{
 									$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 									while ($a = mysqli_fetch_array ($r)){
+										$date = date_create($a["data_insulina"]);
 										echo "<tr>";
-										echo "<td>".$a["data_insulina"]."</td>";
+										echo "<td>".date_format($date, 'd/m/Y')."</td>";
 										echo "<td>".$a["hora_insulina"]."</td>";
 										echo "<td>".$a["tipo"]."</td>";
 										echo "<td>".$a["unidade"]."</td>";
@@ -116,5 +123,8 @@
 			</div>
 			</div>
 		</div>
+		<script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
 	</body>
 </html>

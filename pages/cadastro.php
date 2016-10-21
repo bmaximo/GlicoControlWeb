@@ -16,7 +16,7 @@
 		$r = mysqli_query ($mysqli, $queryInsert) or die (mysqli_error($mysqli));
 		echo "<script>alert('Usuário cadastrado com sucesso.'); history.back();</script>";
 	}catch(Exception $e){
-		echo "Erro ao adicionar paciente: ".  $e->getMessage();
+		echo "Erro ao adicionar usuário: ".  $e->getMessage();
 	}
 
 	/*$busca = mysqli_num_rows(mysqli_query($mysqli, $queryBusca));

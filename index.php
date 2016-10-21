@@ -57,7 +57,7 @@
 									echo "<a href='pages/minha_area.php'>Minha Área</a>";
 									echo "</li>";
 									echo "<li>";
-									echo "<a href='#'>Meu Perfil</a>";
+									echo "<a href='pages/perfil.php'>Meu Perfil</a>";
 									echo "</li>";
 									echo "<li>";
 									echo "<a href='pages/sair.php'>Sair</a>";

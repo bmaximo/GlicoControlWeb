@@ -18,18 +18,24 @@
 			<div class="row-white">
 			<div class="container">
 			<div class="row row-space">
+				<div class="col-md-3">
+					<br />
+					<a class="btn btn-primary btn-xs" href="area_paciente.php" role="button">
+						<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar ao paciente</a>
+				</div>
 				<div class="col-md-12">
 					<h1>Relatório de Medições</h1>
 				</div>
 				<div class="col-md-12">
-						<?php
-							$p = $_SESSION['id_paciente'];
-							$sql = "select nome from paciente where id_paciente = '$p'";
-							require 'connection_mysql.php';
-							$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
-							$dados = mysqli_fetch_array($r);
-							echo "<h4 class='text-center text-primary'><p class='text-center'>Paciente: ".$dados['nome']."</p></h4>";
-						?>
+					<?php
+						$p = $_SESSION['id_paciente'];
+						$sql = "select nome from paciente where id_paciente = '$p'";
+						require 'connection_mysql.php';
+						$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
+						$dados = mysqli_fetch_array($r);
+						echo "<h4 class='text-center text-primary'><p class='text-center'>Paciente: ".$dados['nome']."</p></h4>";
+					?>
+					
 					</div>
 				<div class="col-md-12">
 					<br /><br />
@@ -97,6 +103,7 @@
 									try{
 									$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 									while ($a = mysqli_fetch_array ($r)){
+										$date = date_create($a["data_medicao"]);
 										if($a['valor']>=160.00){
 											$cor = "danger";
 										}elseif($a['valor']<70.00){
@@ -109,7 +116,7 @@
 										echo $a["valor"];
 										echo "</td>";
 										echo "<td>";
-										echo $a["data_medicao"];
+										echo date_format($date, 'd/m/Y');
 										echo "</td>";
 										echo "<td>";
 										echo $a["hora_medicao"];
@@ -131,5 +138,8 @@
 			</div>
 			</div>
 		</div>
+		<script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
 	</body>
 </html>

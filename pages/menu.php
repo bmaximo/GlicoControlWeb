@@ -1,7 +1,7 @@
 <div class="row">
 				<div class="col-md-12">	
 					<div class="logo">
-						<img src="../img/logo.png" width="100%" height="100%">
+						<a href="../index.php"><img src="../img/logo.png" width="100%" height="100%"></a>
 					</div>
 				</div>
 			</div>
@@ -23,7 +23,7 @@
 									<a href="sobre.php">Sobre</a>
 								</li>
 								<li>
-									<a href="estatisticas.php">Estatisticas</a>
+									<a href="estatisticas.php">GlicoControl em Números</a>
 								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">

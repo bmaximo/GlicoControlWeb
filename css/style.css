@@ -92,7 +92,7 @@ a:active {
   margin-right: auto;
   margin-left: auto;
   background-color: #f8f8f8;
-  min-height: 500px;
+  min-height: 600px;
 }
 .row-space{
   margin-top: auto;
@@ -118,4 +118,8 @@ h1{
   width: 250px;
   border-radius: 8px;
   background-color: #aaccff;
+}
+canvas { 
+  width: 100%;
+  height: auto;
 }

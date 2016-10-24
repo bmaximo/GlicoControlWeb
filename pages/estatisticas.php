@@ -9,6 +9,13 @@
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
+		<script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.annotate.js" ></script>
+    <script src="../libraries/RGraph.common.context.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.resizing.js" ></script>
+		<script src="../libraries/RGraph.common.dynamic.js" ></script>
+		<script src="../libraries/RGraph.pie.js" ></script>
     
   </head>
   <body>
@@ -41,7 +48,7 @@
 								<a href="sobre.php">Sobre</a>
 							</li>
 							<li>
-								<a href="estatisticas.php">Estatisticas</a>
+								<a href="estatisticas.php">GlicoControl em Números</a>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
@@ -147,13 +154,113 @@
 		</div>
 		<div class="row row-space">
 			<div class="col-md-12">
-				<h1>estatistica</h1>
+				<br />
+				<h1>GlicoControl em Números</h1>
+				<br /><br />
 			</div>
+			
+				<?php
+					$tipos = array();
+					$tipoCent = array();
+					$sexo = array();
+					$sexoCent = array();
+				
+					$queryTotal = "select count(*) as t from paciente";
+					require "connection_mysql.php";
+					$r = mysqli_query ($mysqli,$queryTotal) or die (mysqli_error($mysqli));
+					$dados = mysqli_fetch_array($r);
+					$total = $dados['t'];
+				
+					$queryTipo = "select tipo_diabetes, count(*)/ '$total' as porcentagem from paciente group by tipo_diabetes";
+					$a = mysqli_query ($mysqli,$queryTipo) or die (mysqli_error($mysqli));
+					while ($d = mysqli_fetch_array ($a)){
+						$tipos[]= $d["tipo_diabetes"];
+						$tipoCent[]= round(($d["porcentagem"]*100), 2);
+					}
+				
+					$querySexo = "select sexo, count(*)/ '$total' as porcentagem from paciente group by sexo";
+					$b = mysqli_query ($mysqli,$querySexo) or die (mysqli_error($mysqli));
+					while ($f = mysqli_fetch_array ($b)){
+						$sexo[]= $f["sexo"];
+						$sexoCent[]= round(($f["porcentagem"]*100), 2);
+					}
+				
+					$tipos_string = "['" . join("', '", $tipos) . "']";
+					$tipo_cent_string = "['" . join("', '", $tipoCent) . "']";
+					$sexo_string = "['" . join("', '", $sexo) . "']";
+					$sexo_cent_string = "['" . join("', '", $sexoCent) . "']";
+				?>
+				<div class="col-md-4">
+					<h3 class="text-center text-primary">Porcentagem de pacientes por tipo</h3>
+					<div class="topo">
+						<canvas id="cvs1" idth="200" height="200">[No canvas support]</canvas>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<h3 class="text-center text-primary">Porcentagem de pacientes por sexo</h3>
+					<div class="topo">
+						<canvas id="cvs2" idth="200" height="200">[No canvas support]</canvas>
+					</div>
+				<div class="col-md-6">
+				<script>
+					 window.onload = function ()
+					{
+							var dataTipo    = <?php echo $tipo_cent_string?>;
+							var labelsTipo  = <?php echo $tipos_string?>;
+							for (var i=0; i<dataTipo.length; ++i) {
+									labelsTipo[i] = labelsTipo[i] + ', ' + dataTipo[i] + '%';
+							}
+						 	var dataSexo     = <?php echo $sexo_cent_string?>;
+							var labelsSexo   = <?php echo $sexo_string?>;
+							for (var i=0; i<dataSexo.length; ++i) {
+									labelsSexo[i] = labelsSexo[i] + ', ' + dataSexo[i] + '%';
+							}
+
+							var pie = new RGraph.Pie({
+									id: 'cvs1',
+									data: dataTipo,
+									options: {
+											labels: labelsTipo,
+											labelsSticksList: true,
+											tooltips: labelsTipo,
+											colors: ['#0966E6','#ff4c13','#C0B8B8'],
+											strokestyle: 'white',
+											linewidth: 0,
+											shadowOffsetx: 2,
+											shadowOffsety: 2,
+											shadowBlur: 3,
+											exploded: 7,
+											textAccessible: true
+									}
+							}).draw();
+						 var sexo = new RGraph.Pie({
+									id: 'cvs2',
+									data: dataSexo,
+									options: {
+											labels: labelsSexo,
+											labelsSticksList: true,
+											tooltips: labelsSexo,
+											colors: ['#0966E6','#ff4c13'],
+											strokestyle: 'white',
+											linewidth: 0,
+											shadowOffsetx: 2,
+											shadowOffsety: 2,
+											shadowBlur: 3,
+											exploded: 7,
+											textAccessible: true
+									}
+							}).draw();
+					};
+				</script>
 		</div>
 		</div>
-		<?php
-			include('rodape.php');
-		?>
+	</div>
+	</div>
+	</div>
+	<?php
+		include('rodape.php');
+	?>
 	</div>
 
     <script src="../js/jquery.min.js"></script>

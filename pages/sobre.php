@@ -41,7 +41,7 @@
 								<a href="sobre.php">Sobre</a>
 							</li>
 							<li>
-								<a href="estatisticas.php">Estatisticas</a>
+								<a href="estatisticas.php">GlicoControl em Números</a>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
@@ -149,6 +149,7 @@
 			<div class="col-md-12">
 				<h1>Sobre</h1>
 			</div>
+		</div>
 		</div>
 		</div>
 		<?php

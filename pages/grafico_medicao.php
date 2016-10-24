@@ -14,7 +14,7 @@
     <script src="../libraries/RGraph.common.context.js" ></script>
     <script src="../libraries/RGraph.common.tooltips.js" ></script>
     <script src="../libraries/RGraph.common.resizing.js" ></script>
-    <script src="../libraries/RGraph.line.js" ></script>
+		<script src="../libraries/RGraph.pie.js" ></script>
 		<script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/scripts.js"></script>
@@ -102,7 +102,7 @@
 								$meds[]= $a["valor"];
 							}
 							$datas_string = "['" . join("', '", $datas) . "']";
-									$meds_string = "['" . join("', '", $meds) . "']";
+							$meds_string = "['" . join("', '", $meds) . "']";
 						}
            ?>
 					 <canvas id="cvs" width="800" height="250px">[No canvas support]</canvas>

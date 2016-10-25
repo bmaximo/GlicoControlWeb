@@ -49,7 +49,7 @@
 						<div class="topo">
 							<img src="../img/glicemia.png" width="100%" height="100%" class="img-circle">
 						</div>
-						<h3 class="text-center text-primary">Relatório de Medições</h3>
+						<h3 class="text-center text-primary">Relatório de Índices Glicêmicos</h3>
 					</a>
 				</div>
 				<div class ="col-md-4">
@@ -57,7 +57,7 @@
 						<div class="topo">
 						<img src="../img/grafico.png" width="100%" height="100%" class="img-circle">
 						</div>	
-						<h3 class="text-center text-primary">Gráfico das Medições</h3>
+						<h3 class="text-center text-primary">Gráfico de Índices Glicêmicos</h3>
 					</a>
 				</div>
 				<div class ="col-md-4">
@@ -77,6 +77,7 @@
 					</a>
 				</div>
 			</div>
+			<br /><br /><br /><br />
 			</div>
 			</div>
 			<?php

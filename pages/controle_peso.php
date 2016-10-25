@@ -36,6 +36,7 @@
 							$dados = mysqli_fetch_array($r);
 							echo "<h4 class='text-center text-primary'><p class='text-center'>Paciente: ".$dados['nome']."</p></h4>";
 						?>
+						<br /><br />
 					</div>
         </div>
         <div class="row row-space">
@@ -62,7 +63,7 @@
 											echo "<td>".date_format($date, 'd/m/Y')."</td>";
 											echo "<td>".$a["peso"]."</td>";
 											echo "<td>".$a["valor"]."</td>";
-											echo "<td>Teste</td>";
+											echo "<td>Normal</td>";
 											echo "</tr>";
 										}
 									}catch(Exception $e){

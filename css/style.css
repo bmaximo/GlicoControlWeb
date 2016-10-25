@@ -123,3 +123,19 @@ canvas {
   width: 100%;
   height: auto;
 }
+.icone-rodape{
+  width: 50px;
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rodape{
+  width: 150px;
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}

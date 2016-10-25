@@ -24,7 +24,7 @@
 						<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar ao paciente</a>
 				</div>
 				<div class="col-md-12">
-					<h1>Relatório de Medições</h1>
+					<h1>Relatório de Índices Glicêmicos</h1>
 				</div>
 				<div class="col-md-12">
 					<?php

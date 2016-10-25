@@ -149,8 +149,6 @@
 					</li>
 					<li data-slide-to="1" data-target="#carousel-708755">
 					</li>
-					<li data-slide-to="2" data-target="#carousel-708755">
-					</li>
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
@@ -179,31 +177,41 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">	
 	<div class="row row-space">
+		<br /><br /><br />
 		<div class="col-md-4">
+			<a href="#">
 			<div class="topo">
-				<img src="../img/quadrado_azul.png" width="100%" height="100%" class="img-circle">
+				<img src="../img/mobile.png" width="100%" height="100%" class="img-circle">
 			</div>
+			<h3 class="text-center text-primary">Conheça o aplicativo<br />para pacientes</h3>
+			</a>
 		</div>
 		<div class="col-md-4">
+			<a href="pages/estatisticas.php">
 			<div class="topo">
-				<img src="../img/quadrado_azul.png" width="100%" height="100%" class="img-circle">
+				<img src="../img/grafico.png" width="100%" height="100%" class="img-circle">
 			</div>
+			<h3 class="text-center text-primary">Veja gráficos sobre<br />nossos usúarios</h3>
+			</a>
 		</div>
 		<div class="col-md-4">
+			<a href="pages/sobre.php">
 			<div class="topo">
-				<img src="../img/quadrado_azul.png" width="100%" height="100%" class="img-circle">
+				<img src="../img/sobre.png" width="100%" height="100%" class="img-circle">
 			</div>
+			<h3 class="text-center text-primary">Saiba mais sobre<br />o sistema</h3>
+			</a>
 		</div>
 	</div>
-	<div class="row row-space">
-		<div class="col-md-12">
-			<h3 class="text-center text-primary">
-				h3. Lorem ipsum dolor sit amet.
-			</h3>
-		</div>
+	<br /><br /><br />
 	</div>
+	
 	</div>
+	<?php
+		include('pages/rodape.php');
+	?>
 </div>
 
     <script src="js/jquery.min.js"></script>

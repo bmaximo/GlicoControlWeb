@@ -52,15 +52,20 @@
 							$sql = "select * from paciente where email = '$e' or nome like '$n'";
 							require 'connection_mysql.php';
 							$r = mysqli_query ($mysqli, $sql) or die (mysqli_error());
-							$dados = mysqli_fetch_array($r);
-							if(!empty($dados)){
-								echo "Nome do paciente: ".$dados['nome']."<br />";
-								echo "Data de nascimento: ".$dados['data_nascimento']."<br />";
-								echo "Sexo: ".$dados['sexo']."<br />";
-								echo "<a href='adiciona_paciente.php?id_paciente= $dados[id_paciente]' class='btn btn-primary btn-lg' role='button'>Adicionar</a>";
-							}
-							else{
-								echo "Nenhum paciente encontrado com este email.";
+							while ($dados = mysqli_fetch_array($r)){
+								if(!empty($dados)){
+									$nasc = date_create($dados["data_nascimento"]);
+									echo "Nome do paciente: ".$dados['nome']."<br />";
+									echo "Data de nascimento: ".date_format($nasc, 'd/m/Y')."<br />";
+									echo "Sexo: ".$dados['sexo']."<br />";
+									echo "Diabetes ".$dados['tipo_diabetes']."<br />";
+									echo "E-mail: ".$dados['email']."<br />";
+									echo "<a href='adiciona_paciente.php?id_paciente= $dados[id_paciente]' class='btn btn-primary btn-lg' role='button'>Adicionar</a>";
+									echo "<br /><br /><br />";
+								}
+								else{
+									echo "Nenhum paciente encontrado com este email.";
+								}
 							}
 						}
           ?>

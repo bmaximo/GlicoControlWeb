@@ -14,7 +14,7 @@
     <script src="../libraries/RGraph.common.context.js" ></script>
     <script src="../libraries/RGraph.common.tooltips.js" ></script>
     <script src="../libraries/RGraph.common.resizing.js" ></script>
-		<script src="../libraries/RGraph.pie.js" ></script>
+		<script src="../libraries/RGraph.line.js" ></script>
 		<script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/scripts.js"></script>
@@ -34,7 +34,7 @@
 						</a>
 					</div>
 					<div class="col-md-12">
-						<h1>Gráfico de Medições</h1>
+						<h1>Gráfico de Índices Glicêmicos</h1>
 					</div>
 					<div class="col-md-12">
 						<?php

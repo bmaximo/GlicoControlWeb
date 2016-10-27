@@ -97,7 +97,7 @@
 										$inicio = $_POST['dataInicio'];
 										$fim = $_POST['dataFim'];
 									}
-									$sql = "select * from insulina where fk_paciente = '$id' and data_insulina between '$inicio' and '$fim' order by data_insulina, hora_insulina";
+									$sql = "select * from insulina where fk_paciente = '$id' and data_insulina between '$inicio' and '$fim' order by data_insulina desc, hora_insulina";
 									$cor = "";
 									require 'connection_mysql.php';
 									try{

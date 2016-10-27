@@ -53,7 +53,7 @@
 							<tbody>
 								<?php
 									$id = $_SESSION['id_paciente'];
-									$sql = "select * from imc where fk_paciente = '$id' order by data_imc";
+									$sql = "select * from imc where fk_paciente = '$id' order by data_imc desc";
 									require 'connection_mysql.php';
 									try{
 										$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));

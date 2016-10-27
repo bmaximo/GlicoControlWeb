@@ -193,7 +193,7 @@
 			<div class="topo">
 				<img src="../img/grafico.png" width="100%" height="100%" class="img-circle">
 			</div>
-			<h3 class="text-center text-primary">Veja gráficos sobre<br />nossos usúarios</h3>
+			<h3 class="text-center text-primary">Veja gráficos sobre<br />a diabetes com<br />base em nosos usuários</h3>
 			</a>
 		</div>
 		<div class="col-md-4">

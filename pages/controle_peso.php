@@ -52,18 +52,37 @@
 							</thead>
 							<tbody>
 								<?php
+									$descricao="";
 									$id = $_SESSION['id_paciente'];
 									$sql = "select * from imc where fk_paciente = '$id' order by data_imc desc";
 									require 'connection_mysql.php';
 									try{
 										$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 										while ($a = mysqli_fetch_array ($r)){
+											if($a['valor'] < 18.50){
+												$descricao = "Abaixo do Peso";
+											}
+											elseif($a['valor']>=18.50 && $a['valor']<25.00){
+												$descricao = "Peso Normal";
+											}
+											elseif($a['valor']>=25.00 && $a['valor']<30.00){
+												$descricao = "Pré-Obesidade";
+											}
+											elseif($a['valor']>=30.00 && $a['valor']<35.00){
+												$descricao = "Obesidade I";
+											}
+											elseif($a['valor']>=35.00 && $a['valor']<40.00){
+												$descricao = "Obesidade II";
+											}
+											else{
+												$descricao = "Obesidade III";
+											}
 											$date = date_create($a["data_imc"]);
 											echo "<tr>";
 											echo "<td>".date_format($date, 'd/m/Y')."</td>";
 											echo "<td>".$a["peso"]."</td>";
 											echo "<td>".$a["valor"]."</td>";
-											echo "<td>Normal</td>";
+											echo "<td>".$descricao."</td>";
 											echo "</tr>";
 										}
 									}catch(Exception $e){

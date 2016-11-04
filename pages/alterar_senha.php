@@ -152,68 +152,31 @@
 				<br /><br />
 			</div>
 			<div class="col-md-4 col-md-offset-4">
-				<h4 class='text-center text-primary'>Digite seu e-mail para recuperação</h4>
-				<form name="recupera" method="post" action="?go=recuperar" >
-					<input type="email" name="email" id="email" class="form-control" />
+				<h4 class='text-center text-primary'>Digite sua nova senha</h4>
+				<form name="recupera" method="post" action="?go=novaSenha" >
+					<label>Senha: </label>
+					<input type="password" name="novasenha" id="novasenha" required class="form-control"  />
+					<label>Confirmar Senha: </label>
+					<input type="password" name="confirmanovasenha" id="confirmanovasenha" required class="form-control" />
 					<br />
-					<button type="submit" name="Enviar e-mail" id="enviar" value="Enviar e-mail" class="btn btn-primary">Enviar e-mail</button>
+					<button type="submit" name="Trocar senha" id="Trocar senha" value="Trocar senha" class="btn btn-primary">Trocar senha</button>
 				</form>
 				<?php
-					function enviaEmail($e, $n, $id){
-						require '../phpmailer/PHPMailerAutoload.php';
-						//require '../phpmailer/class.smtp.php';
-						
-						$mail = new PHPMailer();
-						
-						$mail->SMTPDebug = 3;
-						
-						$mail->IsSMTP(); 
-						$mail->Host = 'mx1.hostinger.com.br';
-						$mail->Port = 2525; 
-						$mail->SMTPAuth = true;
-						$mail->Username = 'contato@glicocontrol.esy.es';
-						$mail->Password = 'password';
-						$mail->SMTPSecure = false;
-						$mail->Mailer = 'smtp.hostinger.com.br';
-
-						$mail->setFrom('contato@glicocontrol.esy.es', 'GlicoControl');
-						
-						$mail->AddAddress($e, $n);
-						$mail->AddCC('barbara.cmaximo@gmail.com', 'Eu'); # Copia
-						
-						$mail->IsHTML(true); 
-						$mail->CharSet = 'iso-8859-1'; 
-
-						$mail->Subject = "Recuperar Senha"; 
-						$mail->Body = "Ola, ".$n."<br>Para alterar sua senha clique <a href='http://glicocontrol.esy.es/pages/senha_sessao.php?id_usuario=".$id."'>aqui</a>";
-						$mail->AltBody = "Este é o corpo da mensagem de teste, somente Texto! \r\n :)";
-						
-						$enviado = $mail->Send();
-
-						$mail->ClearAllRecipients();
-						
-						if ($enviado) {
-						 echo "<br /><div class='alert alert-success' role='alert'>E-mail enviado com sucesso para ".$e."</div>"; 
-						} else {
-						 echo "Não foi possivel enviar o e-mail.";
-						 echo "<b>Informações do erro:</b> " . $mail->ErrorInfo;
+					if(@$_GET['go'] == 'novaSenha'){
+						session_start();
+						$u = $_SESSION['id_senha'];
+						$sn = $_POST['novasenha'];
+						$query = "update usuario set senha = '$sn' where id_usuario = '$u'";
+						require 'connection_mysql.php';
+						try{
+							$r = mysqli_query ($mysqli, $query) or die (mysqli_error($mysqli));
+							echo "<br /><div class='alert alert-success' role='alert'>Senha alterada com sucesso</div>";
+							session_destroy();
+						}catch(Exception $e){
+							echo "Erro ao editar: ".  $e->getMessage();
 						}
-						
-						
 					}
 					
-					if(@$_GET['go'] == 'recuperar'){
-						$email = $_POST["email"];
-						$query = "select * from usuario where email = '$email'";
-						require 'connection_mysql.php';
-						$r = mysqli_query ($mysqli, $query) or die (mysqli_error());
-						$dados = mysqli_fetch_array($r);
-						if(!empty($dados)){
-							enviaEmail($email, $dados["nome"], $dados["id_usuario"]);
-						}else{
-							echo "<br /><div class='alert alert-danger' role='alert'>E-mail não encontrado na base de dados</div>";
-						}
-					}
 				?>
 			</div>
 		</div>
@@ -229,7 +192,9 @@
     <script src="../js/scripts.js"></script>
 		<script>
 			var password = document.getElementById("senha"),
-			var confirm_password = document.getElementById("confirmasenha");
+			var confirm_password = document.getElementById("confirmasenha"),
+			var newpassword = document.getElementById("novasenha"),
+			var newconfirm_password = document.getElementById("confirmanovasenha");
 			function validatePassword(){
 				if(password.value != confirm_password.value) {
 					confirm_password.setCustomValidity("Senhas não correspondem");
@@ -237,10 +202,19 @@
 					confirm_password.setCustomValidity('');
 				}
 			}
+			function validateNewPassword(){
+				if(newpassword.value != newconfirm_password.value){
+					newconfirm_password.setCustomValidity("Senhas não correspondem");
+				} else{
+					newconfirm_password.setCustomValidity('');
+				}
+			}
 			password.onchange = validatePassword;
 			confirm_password.onkeyup = validatePassword;
+			newpassword.onchange = validatePassword;
+			newconfirm_password.onkeyup = validatePassword;
 		</script>
-
-    
+		
   </body>
 </html>
+

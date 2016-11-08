@@ -120,7 +120,7 @@
 												<input type="password" name="senha" id="senha" required class="form-control"/>
 												<br />
 												<input type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-primary">
-												<a href="#">Esqueci minha senha</a>
+												<a href="recupera_acesso.php">Esqueci minha senha</a>
 											</form>
 										</div> 
 										<div id="cadastrar">

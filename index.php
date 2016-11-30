@@ -163,7 +163,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="Carousel Bootstrap Second" src="img/slide2.jpg">
+						<img alt="Carousel Bootstrap Second" src="img/slide2.png">
 						<div class="carousel-caption">
 							<h4>
 								Second Thumbnail label

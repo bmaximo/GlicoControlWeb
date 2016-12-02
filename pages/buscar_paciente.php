@@ -47,11 +47,17 @@
 					<br /><br />
           <?php
 						if(@$_GET['go'] == 'pesquisar'){
+							$sql = "";
 							$e = $_POST["email"];
-							$n = "%".$_POST["nome"]."%";
-							$sql = "select * from paciente where email = '$e' or nome like '$n'";
+							$n = $_POST["nome"];
+							if(!empty($e) || $e != ""){
+								$sql = "select * from paciente where email = '$e'";
+							}elseif(!empty($n) || $n != ""){
+								$nomebusca = "%".$n."%";
+								$sql = "select * from paciente where nome like '$nomebusca'";
+							}
 							require 'connection_mysql.php';
-							$r = mysqli_query ($mysqli, $sql) or die (mysqli_error());
+							$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 							while ($dados = mysqli_fetch_array($r)){
 								if(!empty($dados)){
 									$nasc = date_create($dados["data_nascimento"]);
@@ -64,7 +70,7 @@
 									echo "<br /><br /><br />";
 								}
 								else{
-									echo "Nenhum paciente encontrado com este email.";
+									echo "Nenhum paciente encontrado.";
 								}
 							}
 						}

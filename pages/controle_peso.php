@@ -46,7 +46,8 @@
 								<tr>
 									<th>Data</th>
 									<th>Peso</th>
-									<th>Valor</th>
+									<th>Altura</th>
+									<th>IMC</th>
 									<th>Descrição</th>
 								</tr>
 							</thead>
@@ -59,19 +60,20 @@
 									try{
 										$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 										while ($a = mysqli_fetch_array ($r)){
-											if($a['valor'] < 18.50){
+											$imc = $a["peso"]/($a["altura"]^2);
+											if($imc < 18.50){
 												$descricao = "Abaixo do Peso";
 											}
-											elseif($a['valor']>=18.50 && $a['valor']<25.00){
+											elseif($imc >=18.50 && $imc <25.00){
 												$descricao = "Peso Normal";
 											}
-											elseif($a['valor']>=25.00 && $a['valor']<30.00){
+											elseif($imc >=25.00 && $imc<30.00){
 												$descricao = "Pré-Obesidade";
 											}
-											elseif($a['valor']>=30.00 && $a['valor']<35.00){
+											elseif($imc >=30.00 && $imc <35.00){
 												$descricao = "Obesidade I";
 											}
-											elseif($a['valor']>=35.00 && $a['valor']<40.00){
+											elseif($imc >=35.00 && $imc <40.00){
 												$descricao = "Obesidade II";
 											}
 											else{
@@ -81,7 +83,8 @@
 											echo "<tr>";
 											echo "<td>".date_format($date, 'd/m/Y')."</td>";
 											echo "<td>".$a["peso"]."</td>";
-											echo "<td>".$a["valor"]."</td>";
+											echo "<td>".$a["altura"]."</td>";
+											echo "<td>".round($imc,2)."</td>";
 											echo "<td>".$descricao."</td>";
 											echo "</tr>";
 										}

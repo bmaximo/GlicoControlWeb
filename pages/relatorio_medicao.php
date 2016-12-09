@@ -104,9 +104,9 @@
 									$r = mysqli_query ($mysqli, $sql) or die (mysqli_error($mysqli));
 									while ($a = mysqli_fetch_array ($r)){
 										$date = date_create($a["data_medicao"]);
-										if($a['valor']>=160.00){
+										if($a['valor']>=180.00){
 											$cor = "danger";
-										}elseif($a['valor']<70.00){
+										}elseif($a['valor']<=70.00){
 											$cor = "warning";
 										}else{
 											$cor="active";

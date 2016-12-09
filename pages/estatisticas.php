@@ -74,7 +74,6 @@
 										echo "</li>";
 										echo "</ul>";
 										echo "</li>";
-
 									}else{
 										echo "<a class='btn' role='button' href='#modal-container-960468' data-toggle='modal'>Área de Acesso aos Profissionais de Saúde</a>	";
 									}
@@ -160,35 +159,65 @@
 			</div>
 			
 				<?php
+					//graficos baseados em numero de pacientes - Inicio
 					$tipos = array();
 					$tipoCent = array();
 					$sexo = array();
 					$sexoCent = array();
-				
+					//query de total de pacientes
 					$queryTotal = "select count(*) as t from paciente";
 					require "connection_mysql.php";
 					$r = mysqli_query ($mysqli,$queryTotal) or die (mysqli_error($mysqli));
 					$dados = mysqli_fetch_array($r);
 					$total = $dados['t'];
-				
+					//query com porcentagem de diabeticos por tipo
 					$queryTipo = "select tipo_diabetes, count(*)/ '$total' as porcentagem from paciente group by tipo_diabetes";
 					$a = mysqli_query ($mysqli,$queryTipo) or die (mysqli_error($mysqli));
 					while ($d = mysqli_fetch_array ($a)){
 						$tipos[]= $d["tipo_diabetes"];
 						$tipoCent[]= round(($d["porcentagem"]*100), 2);
 					}
-				
+					//query de porcentagem de pacientes por sexo
 					$querySexo = "select sexo, count(*)/ '$total' as porcentagem from paciente group by sexo";
 					$b = mysqli_query ($mysqli,$querySexo) or die (mysqli_error($mysqli));
 					while ($f = mysqli_fetch_array ($b)){
 						$sexo[]= $f["sexo"];
 						$sexoCent[]= round(($f["porcentagem"]*100), 2);
 					}
-				
+					//Arrays de tipos de diabetes
 					$tipos_string = "['" . join("', '", $tipos) . "']";
 					$tipo_cent_string = "['" . join("', '", $tipoCent) . "']";
+					//Arrays de pacientes por sexo
 					$sexo_string = "['" . join("', '", $sexo) . "']";
 					$sexo_cent_string = "['" . join("', '", $sexoCent) . "']";
+					//graficos baseados em numero de pacientes - Fim
+			
+					//graficos baseados em indices glicemicos - Inicio
+					$alto = array();
+					$altoCent = array();
+					$baixo = array();
+					$baixoCent = array();
+					//query de total de medicoes
+					$queryMedicoes = "select count(*) as m from medicao";
+					$c = mysqli_query ($mysqli,$queryMedicoes) or die (mysqli_error($mysqli));
+					$dadosM = mysqli_fetch_array($c);
+					$totalM = $dadosM['m'];
+					//query de medicoes mais altas
+					$queryAlto = "select count(*)/'$totalM' as p from medicao where valor >= 180.00";
+					$d = mysqli_query ($mysqli,$queryAlto) or die (mysqli_error($mysqli));
+					$dadosA = mysqli_fetch_array($d);
+					$porcAlto = round(($dadosA['p']*100),2);
+					//query de medicoes mais baixas
+					$queryBaixo = "select count(*)/'$totalM' as p from medicao where valor <= 70.00";
+					$f = mysqli_query ($mysqli,$queryBaixo) or die (mysqli_error($mysqli));
+					$dadosB = mysqli_fetch_array($f);
+					$porcBaixo = round(($dadosB['p']*100),2);
+					//Arrays de altos
+					$alto_string = "['Acima das Metas','Demais medições']";
+					$alto_cent_string = "['" .$porcAlto. "','".(100 - $porcAlto)."']";
+					//Arrays de baixos
+					$baixo_string = "['Abaixo das Metas','Demais medições']";
+					$baixo_cent_string = "['" .$porcBaixo. "','".(100 - $porcBaixo)."']";
 				?>
 				<div class="col-md-4">
 					<h3 class="text-center text-primary">Porcentagem de pacientes por tipo</h3>
@@ -196,12 +225,29 @@
 						<canvas id="cvs1" idth="200" height="200">[No canvas support]</canvas>
 					</div>
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-3"></div>
 				<div class="col-md-4">
 					<h3 class="text-center text-primary">Porcentagem de pacientes por sexo</h3>
 					<div class="topo">
 						<canvas id="cvs2" idth="200" height="200">[No canvas support]</canvas>
 					</div>
+				</div>
+				<div class="col-md-12"> <br /><br /><br /><br /><br /><br /></div>
+				
+				<div class="col-md-4">
+					<h3 class="text-center text-primary">Porcentagem de índices acima das metas de controle glicêmico</h3>
+					<div class="topo">
+						<canvas id="cvs3" idth="200" height="200">[No canvas support]</canvas>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+				<div class="col-md-4">
+					<h3 class="text-center text-primary">Porcentagem de índices abaixo das metas de controle glicêmico</h3>
+					<div class="topo">
+						<canvas id="cvs4" idth="200" height="200">[No canvas support]</canvas>
+					</div>
+				</div>
+				<div class="col-md-12"> <br /><br /><br /><br /><br /><br /></div>
 				<div class="col-md-6">
 				<script>
 					 window.onload = function ()
@@ -215,6 +261,16 @@
 							var labelsSexo   = <?php echo $sexo_string?>;
 							for (var i=0; i<dataSexo.length; ++i) {
 									labelsSexo[i] = labelsSexo[i] + ', ' + dataSexo[i] + '%';
+							}
+							var dataAlto     = <?php echo $alto_cent_string?>;
+							var labelsAlto   = <?php echo $alto_string?>;
+							for (var i=0; i<dataAlto.length; ++i) {
+									labelsAlto[i] = labelsAlto[i] + ', ' + dataAlto[i] + '%';
+							}
+							var dataBaixo     = <?php echo $baixo_cent_string?>;
+							var labelsBaixo   = <?php echo $baixo_string?>;
+							for (var i=0; i<dataBaixo.length; ++i) {
+									labelsBaixo[i] = labelsBaixo[i] + ', ' + dataBaixo[i] + '%';
 							}
 
 							var pie = new RGraph.Pie({
@@ -241,7 +297,41 @@
 											labels: labelsSexo,
 											labelsSticksList: true,
 											tooltips: labelsSexo,
-											colors: ['#0966E6','#ff4c13'],
+											colors: ['#ff4c13','#0966E6'],
+											strokestyle: 'white',
+											linewidth: 0,
+											shadowOffsetx: 2,
+											shadowOffsety: 2,
+											shadowBlur: 3,
+											exploded: 7,
+											textAccessible: true
+									}
+							}).draw();
+						 var alto = new RGraph.Pie({
+									id: 'cvs3',
+									data: dataAlto,
+									options: {
+											labels: labelsAlto,
+											labelsSticksList: true,
+											tooltips: labelsAlto,
+											colors: ['#ff4c13','#0966E6'],
+											strokestyle: 'white',
+											linewidth: 0,
+											shadowOffsetx: 2,
+											shadowOffsety: 2,
+											shadowBlur: 3,
+											exploded: 7,
+											textAccessible: true
+									}
+							}).draw();
+						 var baixo = new RGraph.Pie({
+									id: 'cvs4',
+									data: dataBaixo,
+									options: {
+											labels: labelsBaixo,
+											labelsSticksList: true,
+											tooltips: labelsBaixo,
+											colors: ['#ff4c13','#0966E6'],
 											strokestyle: 'white',
 											linewidth: 0,
 											shadowOffsetx: 2,

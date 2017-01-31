@@ -62,13 +62,13 @@
 										while ($a = mysqli_fetch_array ($r)){
 											$imc = $a["peso"]/($a["altura"]^2);
 											if($imc < 18.50){
-												$descricao = "Abaixo do Peso";
+												$descricao = "Baixo Peso";
 											}
 											elseif($imc >=18.50 && $imc <25.00){
-												$descricao = "Peso Normal";
+												$descricao = "Peso Adequado";
 											}
 											elseif($imc >=25.00 && $imc<30.00){
-												$descricao = "Pré-Obesidade";
+												$descricao = "Sobrepeso";
 											}
 											elseif($imc >=30.00 && $imc <35.00){
 												$descricao = "Obesidade I";
